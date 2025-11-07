@@ -1,22 +1,24 @@
 <template>
-    <div class="card text-center text-white bg-dark bg-opacity-75 shadow-lg p-4 rounded-4">
-        <h1 class="display-5 fw-bold mb-3 text-shadow">WELCOME TO MATHROPOLIS</h1>
-        <p class="lead mb-4">
-            Learn financial literacy through fun challenges!
-        </p>
-        <div class="d-flex justify-content-center gap-3 flex-wrap">
-            <button class="btn btn-primary btn-lg" @click="playAsGuest">
-                Play as Guest
-            </button>
-            <button class="btn btn-outline-light btn-lg" @click="$router.push('/login')">
-                Login / Register
-            </button>
+    <div class="game-container d-flex flex-column vh-100">
+        <!-- Top Nav -->
+        <Navbar coins="0" />
+
+        <!-- Background map area -->
+        <div class="flex-fill position-relative intro-bg">
+            <div class="overlay-card d-flex justify-content-center align-items-center">
+                <router-view />
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import Navbar from './Navbar.vue';
+
 export default {
+    components: {
+        Navbar
+    },
     methods: {
         toggleMenu() {
             // open side menu or offcanvas if you add one

@@ -1,56 +1,7 @@
-<!-- <template>
-    <div class="map-screen">
-        <h2>Mathropolis City</h2>
-        <div>
-            <button v-for="store in stores" :key="store.name" :disabled="!progress.unlocked.includes(store.name)"
-                @click="goToQuiz(store.name)">
-                {{ store.label }} <span v-if="!progress.unlocked.includes(store.name)">🔒</span>
-            </button>
-        </div>
-        <button v-if="progress.guest" @click="$router.push('/login')">
-            Login to Unlock Final Challenge
-        </button>
-    </div>
-</template>
-
-<script>
-export default {
-    data() {
-        return {
-            stores: [
-                { name: "bank", label: "Bank" },
-                { name: "supermarket", label: "Supermarket" },
-                { name: "fastfood", label: "Fast Food" },
-                { name: "department", label: "Department Store" },
-                { name: "online", label: "Online Store" },
-                { name: "final", label: "Final Challenge" },
-            ],
-            progress: JSON.parse(localStorage.getItem("progress")) || { guest: true, unlocked: ["bank"] }
-        };
-    },
-    methods: {
-        goToQuiz(store) {
-            if (store === "final" && this.progress.guest) {
-                alert("Please login to continue!");
-                this.$router.push("/login");
-            } else {
-                this.$router.push(`/quiz/${store}`);
-            }
-        }
-    }
-};
-</script>
- -->
 <template>
-  <!--   <Navbar coin="1000" /> -->
-    <div class="game-container d-flex flex-column vh-100">
-
-        <div class="flex-fill position-relative intro-bg">
-            <img v-for="b in buildings" :key="b.name" :src="b.img" :alt="b.name" class="building" :style="b.style"
-                @click="goTo(b.route)" />
-        </div>
-        <!-- Individual buildings -->
-
+    <div class="flex-fill position-relative intro-bg">
+        <img v-for="b in buildings" :key="b.name" :src="b.img" :alt="b.name" class="building" :style="b.style"
+            @click="goTo(b.route)" />
     </div>
 </template>
 
@@ -136,6 +87,6 @@ export default {
 .building:hover {
     transform: scale(1.3);
     z-index: 10;
-   
+
 }
 </style>
