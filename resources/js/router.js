@@ -4,6 +4,8 @@ import Map from "./pages/Map.vue";
 import Quiz from "./pages/Quiz.vue";
 import Login from "./pages/auth/Login.vue";
 import Final from "./pages/Final.vue";
+import SuperMarket from "./pages/building/SuperMarket.vue";
+import BuildingLayout from "./pages/building/BuildingLayout.vue";
 const childPage = [
   {
     path: "/home",
@@ -27,7 +29,10 @@ const routes = [
     component: () => import('./pages/MainLayout.vue'),
     children: childPage
   },
-
+  {
+    path: "/building/:building",
+    component: BuildingLayout,
+  },
 ];
 
 const router = createRouter({

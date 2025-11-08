@@ -1,18 +1,22 @@
 <template>
-    <nav class="navbar navbar-expand bg-light shadow-sm px-3 justify-content-between">
+    <header
+        class=" m-4 d-flex justify-content-between align-items-center p-3 bg-white bg-opacity-90 rounded-4 shadow-lg z-10">
         <div class="d-flex align-items-center">
-            <button class="btn btn-link p-0 me-3" @click="toggleMenu">
-                <i class="bi bi-list fs-3"></i>
-            </button>
-            <button class="btn btn-link p-0">
+            <h1 class="fs-5 fw-bold text-primary">MATHROPOLIS</h1>
+            <!--  <button class="btn btn-link p-0">
+                Profile
                 <i class="bi bi-person-circle fs-3"></i>
-            </button>
+            </button> -->
         </div>
         <div class="d-flex align-items-center">
             <i class="bi bi-coin me-1 fs-4 text-warning"></i>
-            <span class="fw-bold">{{ coins }}</span>
+            <span class="btn btn-secondary shadow-sm">{{ coins }}</span>
         </div>
-    </nav>
+        <!--  <h1 class="fs-5 fw-bold text-primary">MATHROPOLIS (Vue)</h1>
+        <button @click="showMap" v-show="currentView !== 'map'" class="btn btn-secondary shadow-sm">
+            &leftarrow; Back to Map
+        </button> -->
+    </header>
 </template>
 
 <script>

@@ -1,14 +1,14 @@
 <template>
-    <div class="flex-fill position-relative intro-bg">
-       <!--  <img v-for="b in buildings" :key="b.name" :src="b.img" :alt="b.name" class="building" :style="b.style"
-            @click="goTo(b.route)" /> -->
+    <div class="building-container">
+        <div v-for="b in buildings" :key="b.name" :alt="b.name" class="building" :style="b.style"
+            @click="goTo(b.route)"></div>
     </div>
 </template>
 
 <script>
-import imageMap from "../images/city-map-v2.png";
 import { gameState } from '../store/gameState.js'
 import Navbar from "./Navbar.vue";
+
 export default {
     name: "GameMap",
     components: {
@@ -16,77 +16,76 @@ export default {
     },
     data() {
         return {
-            imageMap,
             buildings: [
                 {
                     name: "Real Estate",
-                    img: "/images/realEstate.png",
+                    // No img source needed here!
                     route: "/quiz/bank",
-                    style: "top: 180%; left: -51%; width: 55%;",
+                    // Define a clickable box over the Realty building in the background
+                    style: "bottom: 25%; left: 8%; width: 20%; height: 30%;"
                 },
                 {
                     name: "City Hall",
-                    img: "/images/cityhall.png",
                     route: "/quiz/cityhall",
-                    style: "top: -17%; left: 18%; width: 30%;",
+                    // Define a clickable box over the City Hall building
+                    style: "top: 10%; left: 30%; width: 35%; height: 40%;"
                 },
                 {
                     name: "Store",
-                    img: "/images/store.png",
-                    route: "/quiz/fastfood",
-                    style: "top: -5%; left: 56%; width: 26%;",
+                    route: "building/supermarket",
+                    // Define a clickable box over the Store building (upper right)
+                    style: "top: 20%; left: 60%; width: 30%; height: 35%;"
                 },
                 {
                     name: "Bank",
-                    img: "/images/bank.png",
                     route: "/quiz/online",
-                    style: "top: 27.5%; left: 75.5%; width: 23%;",
+                    // Define a clickable box over the Bank building (middle right)
+                    style: "top: 30%; left: 70%; width: 25%; height: 30%;",
                 },
                 {
                     name: "Market",
-                    img: "/images/market.png",
                     route: "/quiz/department",
-                    style: "top: 52%; left: 50%; width: 30%;",
+                    // Define a clickable box over the Market Square building (center bottom)
+                    style: "bottom: 15%; left: 45%; width: 25%; height: 30%;",
                 },
             ],
         };
     },
     methods: {
-        enterBuilding(name) {
-            if (!gameState.unlocked[name]) {
-                alert('Complete the previous level to unlock this building!');
-                return;
-            }
-            // router push to quiz/scene for this building
-            // router.push(`/quiz/${name}`);
-        },
+        // ... your existing methods ...
         goTo(route) {
             this.$router.push(route);
         },
-
     },
 };
 </script>
 
 <style scoped>
-.game-container {
-    background: #dff5f2;
+/* 🔑 KEY: Ensures this container fills the parent (intro-bg) and is the positioning context */
+.building-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
-
-.intro-bg {
-    background: url('/images/city-map-v2.png') center/cover no-repeat;
-}
-
 
 .building {
+    /* 🔑 KEY: Makes the element positionable and clickable but transparent */
     position: absolute;
     cursor: pointer;
-    transition: transform 0.25s ease;
+    background-color: transparent;
+
+    /* ⚠️ UNCOMMENT THE LINE BELOW FOR TESTING to see where your clickable areas are */
+    /* border: 1px dashed red; */
+
+    transition: all 0.2s ease-out;
 }
 
 .building:hover {
-    transform: scale(1.3);
-    z-index: 10;
-
+    z-index: 50;
+    /* Optional: Provides a visual feedback when hovering over the invisible area */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
 }
 </style>

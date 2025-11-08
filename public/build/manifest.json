@@ -7,12 +7,8 @@
       "app.css"
     ]
   },
-  "resources/js/images/city-map-v2.png": {
-    "file": "assets/city-map-v2-CtkZkLHE.png",
-    "src": "resources/js/images/city-map-v2.png"
-  },
   "resources/js/main.js": {
-    "file": "assets/main-BMizFmjg.js",
+    "file": "assets/main-5CSF-6nT.js",
     "name": "main",
     "src": "resources/js/main.js",
     "isEntry": true,
@@ -20,14 +16,11 @@
       "resources/js/pages/MainLayout.vue"
     ],
     "css": [
-      "assets/main-CqhBKqDw.css"
-    ],
-    "assets": [
-      "assets/city-map-v2-CtkZkLHE.png"
+      "assets/main-QWWBx3EK.css"
     ]
   },
   "resources/js/pages/MainLayout.vue": {
-    "file": "assets/MainLayout-DS53wZo7.js",
+    "file": "assets/MainLayout-DtX5NzpM.js",
     "name": "MainLayout",
     "src": "resources/js/pages/MainLayout.vue",
     "isDynamicEntry": true,
@@ -35,7 +28,7 @@
       "resources/js/main.js"
     ],
     "css": [
-      "assets/MainLayout-DVNsMM6H.css"
+      "assets/MainLayout-Btz5Yc40.css"
     ]
   }
 }
