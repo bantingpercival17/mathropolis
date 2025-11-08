@@ -1,0 +1,41 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-BPWzf21J.css",
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "names": [
+      "app.css"
+    ]
+  },
+  "resources/js/images/city-map-v2.png": {
+    "file": "assets/city-map-v2-CtkZkLHE.png",
+    "src": "resources/js/images/city-map-v2.png"
+  },
+  "resources/js/main.js": {
+    "file": "assets/main-BMizFmjg.js",
+    "name": "main",
+    "src": "resources/js/main.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/pages/MainLayout.vue"
+    ],
+    "css": [
+      "assets/main-CqhBKqDw.css"
+    ],
+    "assets": [
+      "assets/city-map-v2-CtkZkLHE.png"
+    ]
+  },
+  "resources/js/pages/MainLayout.vue": {
+    "file": "assets/MainLayout-DS53wZo7.js",
+    "name": "MainLayout",
+    "src": "resources/js/pages/MainLayout.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/main.js"
+    ],
+    "css": [
+      "assets/MainLayout-DVNsMM6H.css"
+    ]
+  }
+}

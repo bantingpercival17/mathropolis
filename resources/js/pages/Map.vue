@@ -1,7 +1,7 @@
 <template>
     <div class="flex-fill position-relative intro-bg">
-        <img v-for="b in buildings" :key="b.name" :src="b.img" :alt="b.name" class="building" :style="b.style"
-            @click="goTo(b.route)" />
+       <!--  <img v-for="b in buildings" :key="b.name" :src="b.img" :alt="b.name" class="building" :style="b.style"
+            @click="goTo(b.route)" /> -->
     </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
                     name: "Real Estate",
                     img: "/images/realEstate.png",
                     route: "/quiz/bank",
-                    style: "top: 35%; left: 5%; width: 20%;",
+                    style: "top: 180%; left: -51%; width: 55%;",
                 },
                 {
                     name: "City Hall",
