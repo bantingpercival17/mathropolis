@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Mathropolis</string>
+    <string name="title_activity_main">Mathropolis</string>
+    <string name="package_name">mathrolopis.app</string>
+    <string name="custom_url_scheme">mathrolopis.app</string>
+</resources>
