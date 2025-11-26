@@ -1,0 +1,24 @@
+#SET UP CAPACITOR
+npm install @capacitor/cli@latest
+npx cap init
+
+npm install @capacitor/android
+# ADD PLATFORMS
+npx cap add android
+
+npm run build
+
+npx cap copy
+
+# First option to build a Mobile Application
+cd android
+./gradlew assembleDebug
+
+#Second option is on android studio
+
+npx cap open android
+
+# Add on android/app/src/main/AndroidManifest.xml
+
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
