@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\UserDevice;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -42,7 +43,7 @@ class AuthController extends Controller
 
         // Create user
         $user = User::create($userData);
-
+        Auth::login($user);
         // Create token
         $token = $user->createToken('auth_token')->plainTextToken;
         $this->storeUserDevice();
@@ -70,6 +71,7 @@ class AuthController extends Controller
         }
 
         $token = $user->createToken('auth_token')->plainTextToken;
+        Auth::login($user);
         $this->storeUserDevice();
         return response()->json([
             'user'  => $user,
