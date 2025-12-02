@@ -40,14 +40,12 @@ class AuthController extends Controller
             'isTeacher' => $userType,
         ];
 
-        if (! $userType) {
-            $userData['teacherCode'] = $request->teacherCode;
-        }
-
         // Create user
         $user = User::create($userData);
-        $user->teacherCode = $request->teacherCode;
-        $user->save();
+        if (!$userType) {
+            $user->teacherCode = $request->teacherCode;
+            $user->save();
+        }
         Auth::login($user);
         // Create token
         $token = $user->createToken('auth_token')->plainTextToken;
