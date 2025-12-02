@@ -26,7 +26,10 @@ class AuthController extends Controller
         $userType  = $request->teacherCode === 'math@2025';
 
         if (! $userType && ! $checkCode) {
-            return response(['message' => 'Invalid Teacher Code'], 404);
+            $data = array(
+                'errors' => array('teacherCode' => ['Invalid Teacher Code']),
+            );
+            return response($data, 422);
         }
 
         // Prepare user data
