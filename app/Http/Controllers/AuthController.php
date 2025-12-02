@@ -46,6 +46,8 @@ class AuthController extends Controller
 
         // Create user
         $user = User::create($userData);
+        $user->teacherCode = $request->teacherCode;
+        $user->save();
         Auth::login($user);
         // Create token
         $token = $user->createToken('auth_token')->plainTextToken;
