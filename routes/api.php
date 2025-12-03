@@ -26,4 +26,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('progress', 'gameProgress');
         Route::post('update-progress', 'updateProgress');
     });
+    Route::prefix('/teacher')->group(function () {
+        Route::get('/retrieve-student', [GameProgressController::class, 'studentsProgress']);
+    });
 });

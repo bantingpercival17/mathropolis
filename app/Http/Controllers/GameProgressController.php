@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GameProgress;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class GameProgressController extends Controller
@@ -41,6 +42,21 @@ class GameProgressController extends Controller
             ]);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Error updating progress', 'error' => $e->getMessage()], 500);
+        }
+    }
+
+    function studentsProgress()
+    {
+        try {
+            $teacher = auth()->user();
+            $studentsProgress = User::where('teacherCode', $teacher->teacherCode)
+                ->where('id', '!=', $teacher->id)
+                ->get();
+            return response()->json([
+                'students_progress' => $studentsProgress,
+            ]);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Error retrieving students progress', 'error' => $e->getMessage()], 500);
         }
     }
 }
