@@ -42,7 +42,7 @@ class GameProgressController extends Controller
             }
             $progress = GameProgress::updateOrCreate(
                 ['user_id' => $user->id],
-                ['coins' => 0, 'progress_data' => $validated['progress_data'], 'budget_plan' => $validated['budget_plan']],
+                ['coins' => $validated['coins'], 'progress_data' => $validated['progress_data'], 'budget_plan' => $validated['budget_plan']],
             );
 
             return response()->json([
