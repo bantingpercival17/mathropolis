@@ -30,7 +30,16 @@ class GameProgressController extends Controller
                 'budget_plan' => 'sometimes|json',
                 'progress_data' => 'sometimes|json',
             ]);
-
+            $accountCheck = GameProgress::where('user_id', $user->id)->first();
+            if (!$accountCheck) {
+                // Create new record if not exists
+                $accountCheck = new GameProgress();
+                $accountCheck->user_id = $user->id;
+                $accountCheck->coins = $validated['coins'];
+                $accountCheck->progress_data = $validated['progress_data'];
+                $accountCheck->budget_plan = $validated['budget_plan'];
+                $accountCheck->save();
+            }
             $progress = GameProgress::updateOrCreate(
                 ['user_id' => $user->id],
                 ['coins' => 0, 'progress_data' => $validated['progress_data'], 'budget_plan' => $validated['budget_plan']],
