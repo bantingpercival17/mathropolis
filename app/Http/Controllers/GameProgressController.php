@@ -14,7 +14,7 @@ class GameProgressController extends Controller
             $user = auth()->user();
             $progress = GameProgress::where('user_id', $user->id)->first();
             return response()->json([
-                'progress' => $progress ? $progress->progress : 0,
+                'progress' => $progress ? $progress : 0,
             ]);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Error retrieving progress', 'error' => $e->getMessage()], 500);
