@@ -94,10 +94,10 @@ class AuthController extends Controller
         UserDevice::create([
             'user_id' => auth()->id(),
             'ip' => request()->ip(),
-            'device_type' => request()->header('Device-Type', 'unknown'),
-            'device_model' => request()->header('Device-Model', 'unknown'),
-            'os_version' => request()->header('OS-Version', 'unknown'),
-            'app_version' => request()->header('App-Version', 'unknown'),
+            'device_type' => request()->header('Device-Type'),
+            'device_model' => request()->header('Device-Model'),
+            'os_version' => request()->header('OS-Version'),
+            'app_version' => request()->header('App-Version'),
         ]);
     }
 }
