@@ -47,7 +47,7 @@ class GameProgressController extends Controller
 
             return response()->json([
                 'message' => 'Progress updated successfully',
-                'progress' => $progress->progress,
+                'progress' => $progress,
             ]);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Error updating progress', 'error' => $e->getMessage()], 500);
