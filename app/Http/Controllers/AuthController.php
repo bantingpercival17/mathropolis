@@ -8,6 +8,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Jenssegers\Agent\Agent;
 
 class AuthController extends Controller
 {
@@ -91,13 +92,15 @@ class AuthController extends Controller
     }
     function storeUserDevice()
     {
+        $agent = new Agent();
+        $agent->setUserAgent(request()->header('User-Agent', ''));
         UserDevice::create([
-            'user_id' => auth()->id(),
-            'ip' => request()->ip(),
-            'device_type'  => request()->header('device-type'),
-            'device_model' => request()->header('device-model'),
-            'os_version'   => request()->header('os-version'),
-            'app_version'  => request()->header('app-version'),
+            'user_id'      => auth()->id(),
+            'ip'           => request()->ip() ?? 'unknown',
+            'device_type'  => request()->header('Device-Type') ?? ($agent->isMobile() ? 'mobile' : ($agent->isTablet() ? 'tablet' : 'desktop')),
+            'device_model' => request()->header('Device-Model') ?? $agent->device() ?? 'unknown',
+            'os_version'   => request()->header('OS-Version') ?? $agent->version($agent->platform()) ?? 'unknown',
+            'app_version'  => request()->header('App-Version', 'unknown'),
         ]);
     }
 }
