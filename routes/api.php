@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // Student Routes
     Route::prefix('/student')->controller(GameProgressController::class)->group(function () {
         Route::post('save-progress', 'updateProgress');
-        Route::get('progress', 'gameProgress');
+        Route::get('progress', 'progress');
         Route::post('update-progress', 'updateProgress');
     });
     Route::prefix('/teacher')->group(function () {
