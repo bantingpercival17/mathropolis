@@ -61,8 +61,26 @@ class GameProgressController extends Controller
             $studentsProgress = User::where('teacherCode', $teacher->teacherCode)
                 ->where('id', '!=', $teacher->id)
                 ->get();
+            $progressData = [];
+            foreach ($studentsProgress as $key => $value) {
+                $unlocked = null;
+
+                foreach (json_decode($value->gameProgress->progress_data, true) as $item) {
+                    if (isset($item['isLocked']) && $item['isLocked'] === false) {
+                        $unlocked = $item;
+                    }
+                }
+
+                $progressData[] = array(
+                    'id' => base64_encode($value->id),
+                    'name' => $value->name,
+                    'progress' => $value->gameProgress ? $unlocked : null,
+                    'budget_plan' => $value->gameProgress ? json_decode($value->gameProgress->budget_plan) : null,
+                    'coins' => $value->gameProgress ? $value->gameProgress->coins : null,
+                );
+            }
             return response()->json([
-                'students_progress' => $studentsProgress,
+                'students_progress' => $progressData,
             ]);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Error retrieving students progress', 'error' => $e->getMessage()], 500);

@@ -53,4 +53,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    function gameProgress()
+    {
+        return $this->hasOne(GameProgress::class, 'user_id', 'id');
+    }
 }
